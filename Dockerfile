@@ -22,7 +22,6 @@ RUN chmod +x /usr/local/bin/solc /usr/local/bin/jq
 
 # setting up Constellation
 RUN wget -q https://github.com/jpmorganchase/constellation/releases/download/v0.3.2/constellation-0.3.2-ubuntu1604.tar.xz && tar xfJ constellation-0.3.2-ubuntu1604.tar.xz && cp constellation-0.3.2-ubuntu1604/constellation-node /usr/local/bin && chmod 0755 /usr/local/bin/constellation-node && rm -rf constellation-0.3.2-ubuntu1604
-
 RUN wget -q https://github.com/jpmorganchase/quorum/releases/download/v1.2.0/porosity && mv porosity /usr/local/bin && chmod 0755 /usr/local/bin/porosity
 
 # Install npm
@@ -30,6 +29,7 @@ RUN apt-get install -y npm && npm install truffle -g
 
 # copy script
 RUN git clone https://github.com/Himanshu-Pandey/quorum-raft-cluster.git
-RUN cd quorum-raft-cluster/ && ./raft-setup.sh
+RUN apt-get install psmisc
+RUN cd quorum-raft-cluster/ && ./raft-setup.sh && ./raft-init.sh
 
 ENTRYPOINT ["bash"]
