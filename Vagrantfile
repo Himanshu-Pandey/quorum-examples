@@ -1,14 +1,31 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.provision :shell, path: "vagrant/bootstrap.sh"
-  config.vm.network "forwarded_port", guest: 22000, host: 22000
-  config.vm.network "forwarded_port", guest: 22001, host: 22001
-  config.vm.network "forwarded_port", guest: 22002, host: 22002
-  config.vm.network "forwarded_port", guest: 22003, host: 22003
-  config.vm.network "forwarded_port", guest: 22004, host: 22004
-  config.vm.network "forwarded_port", guest: 22005, host: 22005
-  config.vm.network "forwarded_port", guest: 22006, host: 22006
   config.vm.provider "virtualbox" do |v|
-    v.memory = 2048
+    v.memory = 1024
+  end
+  config.vm.define "quorum-node1" do |quorum_node|
+    quorum_node.vm.network "private_network", ip: "192.168.33.11"
+  end
+  config.vm.define "quorum-node2" do |quorum_node|
+    quorum_node.vm.network "private_network", ip: "192.168.33.12"
+  end
+  config.vm.define "quorum-node3" do |quorum_node|
+    quorum_node.vm.network "private_network", ip: "192.168.33.13"
+  end
+  config.vm.define "quorum-node4" do |quorum_node|
+    quorum_node.vm.network "private_network", ip: "192.168.33.14"
+  end
+  config.vm.define "quorum-node5" do |quorum_node|
+    quorum_node.vm.network "private_network", ip: "192.168.33.15"
+  end
+  config.vm.define "quorum-node6" do |quorum_node|
+    quorum_node.vm.network "private_network", ip: "192.168.33.16"
+  end
+  config.vm.define "quorum-node7" do |quorum_node|
+    quorum_node.vm.network "private_network", ip: "192.168.33.17"
+  end
+  config.vm.define "quorum-node8" do |quorum_node|
+    quorum_node.vm.network "private_network", ip: "192.168.33.18"
   end
 end
