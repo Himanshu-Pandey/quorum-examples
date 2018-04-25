@@ -30,6 +30,6 @@ RUN apt-get install -y npm && npm install truffle -g
 # copy script
 RUN git clone https://github.com/Himanshu-Pandey/quorum-raft-cluster.git
 RUN apt-get install psmisc
-RUN cd quorum-raft-cluster/ && ./raft-setup.sh 
+RUN cd quorum-raft-cluster/ && ./raft-setup.sh && ./raft-init.sh
 
 ENTRYPOINT ["bash"]
