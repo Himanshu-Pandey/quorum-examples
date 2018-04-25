@@ -28,7 +28,7 @@ RUN wget -q https://github.com/jpmorganchase/quorum/releases/download/v1.2.0/por
 RUN apt-get install -y npm && npm install truffle -g
 
 # copy script
-ECHO "Installation Done..."
+RUN apt-get install -y vim
 RUN git clone https://github.com/Himanshu-Pandey/quorum-raft-cluster.git
 RUN apt-get install psmisc
 RUN cd quorum-raft-cluster/ && ./raft-setup.sh && ./raft-init.sh
