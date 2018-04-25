@@ -36,12 +36,16 @@ popd >/dev/null
 wget -q https://github.com/jpmorganchase/quorum/releases/download/v1.2.0/porosity
 mv porosity /usr/local/bin && chmod 0755 /usr/local/bin/porosity
 
-# copy examples
-cp -r /vagrant/examples /home/vagrant/quorum-examples
-chown -R vagrant:vagrant /home/vagrant/quorum /home/vagrant/quorum-examples
+# Install npm
+sudo apt-get install -y npm
+npm install truffle -g
+
+# copy script
+git clone https://github.com/Himanshu-Pandey/quorum-raft-cluster.git
+cd quorum-raft-cluster/
+./raft-setup.sh
 
 # done!
-banner "Quorum"
+banner "Quorum Installed..."
 echo
-echo 'The Quorum vagrant instance has been provisioned. Examples are available in ~/quorum-examples inside the instance.'
 echo "Use 'vagrant ssh' to open a terminal, 'vagrant suspend' to stop the instance, and 'vagrant destroy' to remove it."
